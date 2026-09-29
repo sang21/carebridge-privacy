@@ -23,7 +23,7 @@
 <body>
 
 <h1>CareVocal Privacy Policy</h1>
-<p class="meta">Last updated: 14 August 2026 · Applies to the CareVocal Android app
+<p class="meta">Last updated: 29 September 2026 · Applies to the CareVocal Android app
 (<code>com.ambermindstudio.carebridge</code>)</p>
 
 <div class="box">
@@ -38,7 +38,7 @@ record with your own doctor and family.</p>
   <li>Most voice check-ins are transcribed <em>on the device</em>, with no recording saved and nothing sent anywhere.</li>
   <li>The rest are recorded and sent — only once you have connectivity — to a transcription service, purely to be turned into text. That covers every "Need Help" check-in, any language your phone cannot transcribe offline, and any check-in you tell us we misheard.</li>
   <li>We never collect your location.</li>
-  <li>We do not sell your data, show ads, or use analytics or advertising trackers.</li>
+  <li>We do not sell your data, show ads, or use advertising trackers. The only usage data that leaves your phone is what the reminder service needs — when you last checked in, how many days in a row, and whether you opened a reminder — never what you logged.</li>
   <li>Nothing is ever sent to your family or emergency contacts automatically. You tap send, every time.</li>
 </ul>
 
@@ -75,7 +75,8 @@ There is no copy anywhere else for us to hold.</p>
   network. Only the resulting text is saved.</li>
   <li><strong>Deferred cloud transcription.</strong> Used in two situations. Either the device
   <em>cannot</em> do it — a language with no offline pack (currently Kannada), Android versions
-  below 12, or a transcript you told us was wrong — or we <em>choose</em> to keep the audio,
+  below 12, a phone with no offline speech recogniser at all, or a transcript you told us was
+  wrong — or we <em>choose</em> to keep the audio,
   which is what happens on every red "Need Help" check-in. The recording is saved in the app's
   private storage and stays on the phone until you have an internet connection. It is then sent
   to be transcribed, and the text is attached to the entry. The recording is not deleted once
@@ -103,9 +104,14 @@ alongside a correction. A sentence you have disowned should never reach your doc
     <td>To manage the optional paid upgrade (extended history) and restore it on a new device. No health data, no transcripts, no recordings.</td>
   </tr>
   <tr>
-    <td>A notification token and device identifier</td>
+    <td>If you enter a family code: that code (which is the referring subscriber's anonymous user ID) and your own anonymous user ID</td>
+    <td>Our own proxy (Cloudflare Workers), which passes them to RevenueCat</td>
+    <td>To check the code and give your family the free extended-history period, and to credit the family that referred you. The proxy stores nothing; RevenueCat keeps a count of how many families each subscriber has referred.</td>
+  </tr>
+  <tr>
+    <td>A notification subscription ID and push token; the date and time of your last check-in and your current streak (a count of days, never what you logged); the language reminders should be written in; when the app is opened and whether a reminder or in-app message was opened; purchases made in the app; basic device information such as model, Android version and time zone</td>
     <td>OneSignal</td>
-    <td>Only if you enable check-in reminders. Reminder notifications never contain your health details.</td>
+    <td>To send check-in reminders at a sensible hour in your own time zone and language, to stop reminding you after a week without check-ins, and to show a short message after milestones such as 14 days of check-ins. This is sent after each check-in whether or not you allow notifications, so reminders can start the moment you allow them; nothing is ever shown on your lock screen unless you do. Reminders never contain your health details.</td>
   </tr>
 </table>
 
@@ -134,7 +140,7 @@ to the app's private cache to make the share possible.</p>
 <ul>
   <li><strong>Microphone</strong> — to record or transcribe a voice check-in. Only while you
   are holding a check-in button. Green "Feeling Good" check-ins never use the microphone.</li>
-  <li><strong>Notifications</strong> — only if you turn on check-in reminders.</li>
+  <li><strong>Notifications</strong> — for check-in reminders. CareVocal explains what the reminders are and only then asks; saying no changes nothing else in the app.</li>
 </ul>
 <p>CareVocal does not request permission to send SMS or place calls. It hands the message and
 the number to your own apps instead, so the final action is always yours.</p>
@@ -175,7 +181,8 @@ can locate the right records. We will confirm and complete the deletion within 3
   <tr><td>Check-ins, transcripts, voice recordings, patient profile, trusted contacts</td><td><strong>Deleted</strong> immediately when you delete the entry, clear storage, or uninstall. Held only on your phone, never on a server.</td></tr>
   <tr><td>Voice recordings sent for transcription</td><td><strong>Nothing to delete.</strong> The copy sent for transcription is used to produce the text and not retained afterwards.</td></tr>
   <tr><td>Purchase record and the anonymous ID that restores it (RevenueCat)</td><td><strong>Deleted on request</strong> by email. Otherwise kept for as long as needed to honour and restore a purchase you have paid for.</td></tr>
-  <tr><td>Notification token, if you enable reminders (OneSignal)</td><td><strong>Deleted</strong> when you turn reminders off or uninstall, and on request by email.</td></tr>
+  <tr><td>Reminder data held by OneSignal: notification token, last check-in time, streak, reminder language, app and message opens</td><td><strong>Deleted on request</strong> by email. Turning notifications off or uninstalling stops every reminder straight away; the record itself stays with OneSignal until you ask us to delete it.</td></tr>
+  <tr><td>Family-code referral count (RevenueCat)</td><td><strong>Deleted on request</strong> by email, together with the purchase record.</td></tr>
 </table>
 <p>We keep no other retained copy of your data, and there is no additional retention period
 beyond what this table describes.</p>
@@ -183,7 +190,7 @@ beyond what this table describes.</p>
 <h2>Your other choices</h2>
 <ul>
   <li>Decline the microphone permission — one-tap logging, the summary, and the red flow all still work.</li>
-  <li>Leave check-in reminders switched off, and no notification token is ever created.</li>
+  <li>Leave notifications off, and you will never receive a reminder. The reminder service still gets your last check-in time and streak, as described above; email us to have that deleted.</li>
 </ul>
 <p>Depending on where you live, you may have rights under laws such as India's Digital Personal
 Data Protection Act, 2023 or the GDPR to access, correct, or erase your personal data. Because
